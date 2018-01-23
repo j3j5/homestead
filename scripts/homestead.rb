@@ -371,5 +371,11 @@ class Homestead
             s.args = [settings["ip"]]
             s.privileged = false
         end
+
+        # Configure libvirt settings
+        config.vm.provider "libvirt" do |qemu|
+            qemu.memory = settings["memory"] ||= "2048"
+            qemu.cpus = settings["cpus"] ||= "2"
+        end
     end
 end
